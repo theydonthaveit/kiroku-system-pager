@@ -1,5 +1,5 @@
 from unittest.mock import Mock, patch
-from nose.tools import assert_is_none, assert_list_equal, assert_true
+from nose.tools import assert_is_none, assert_true
 
 from SlackPager import SlackPager
 
