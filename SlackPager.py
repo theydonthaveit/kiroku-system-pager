@@ -3,16 +3,26 @@ import json
 import os
 
 
-# def main(message: str):
-#     data = {'text': message}
-#     res = requests.post(
-#         os.environ['SLACK_URL'],
-#         data=json.dumps(data),
-#         headers={
-#             'Content-type': 'application/json'
-#         }
-#     )
-#     return res
-
 class SlackPager:
-    pass
+
+
+    def __init__(self, message):
+        self.url = os.environ['SLACK_URL']
+        self.headers = {
+            'Content-type': 'application/json'
+        }
+        self.data = json.dumps({
+            'text': message })
+
+
+    def send_slack_pager_message(self):
+        response = requests.post(
+            self.url,
+            headers=self.headers,
+            data=self.data
+        )
+
+        if response.ok:
+            return True
+        else:
+            return False
